@@ -9,19 +9,19 @@ int goalheight;
 
 
 void setup() {
-  //size(1000, 800);
-  fullScreen();
+  size(1000, 800);
+
   Fx = 0;
-  Fy = 1;
-  v = 45;
+  Fy = 0.3;
+  v = 21;
   goalheight = 300;
 
 
   // 各円の初期位置と速度を設定
   for (int i = 0; i < n; i++) {
     x[i] = 100;
-    y[i] = 1000;
-    float theta = map(i, 0, n, 0, PI / 2); // thetaを0からPI/2まで変化させる
+    y[i] = height - 100;
+    float theta = map(i, 0, n, PI / 4, PI / 3); // thetaを0からPI/2まで変化させる
     vx[i] = cos(theta) * v; // vxを計算
     vy[i] = -sin(theta) * v; // vyを計算
   }
@@ -56,7 +56,6 @@ void draw() {
     // ellipseを描画
     ellipse(x[i], y[i], 20, 20);
   }
-  saveFrame("frames/ball.png");
 }
 
 void mouseClicked() {
